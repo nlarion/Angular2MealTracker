@@ -10,7 +10,7 @@ import {Meal} from './meal.model';
       <h3>Create Meal:</h3>
       <input placeholder="Meal Name" class="col-sm-8 input-lg" #newName>
       <input placeholder="Meal Description" class="col-sm-8 input-lg" #newDescription>
-      <input placeholder="Meal Calories" class="col-sm-8 input-lg" #newCalories>
+      <input placeholder="Meal Calories" type="number" class="col-sm-8 input-lg" #newCalories>
     </div>
     <br>
     <div class="row">
@@ -26,7 +26,7 @@ export class NewMealComponent {
   }
   addMeal(userMealName: HTMLInputElement, userDescription: HTMLInputElement, userCalories: HTMLInputElement){
     console.log("Creating meal...");
-    var holder = [userMealName.value, userDescription.value, userCalories.value];
+    var holder = [userMealName.value, userDescription.value, parseInt(userCalories.value)];
     this.onSubmitNewMeal.emit(holder);
     userMealName.value = "";
     userDescription.value = "";
