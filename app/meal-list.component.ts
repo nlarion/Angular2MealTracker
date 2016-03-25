@@ -6,13 +6,14 @@ import { EditMealDetailsComponent } from './edit-meal-details.component';
 import { NewMealComponent } from './new-meal.component';
 import { CaloriePipe } from './calorie.pipe';
 import { CalorieTotalComponent } from './calorie-total.component';
+import { CalorieAverageComponent } from './calorie-average.component';
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
   pipes: [CaloriePipe],
-  directives:[MealComponent, MealDetails, EditMealDetailsComponent, NewMealComponent, CalorieTotalComponent],
+  directives:[MealComponent, MealDetails, EditMealDetailsComponent, NewMealComponent, CalorieTotalComponent, CalorieAverageComponent],
   template: `
   <select (change)="onChange($event.target.value)">
     <option value="all" selected="selected">Show All</option>
@@ -31,6 +32,7 @@ import { CalorieTotalComponent } from './calorie-total.component';
   </edit-meal-details>
   <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
   <calorie-total [mealList]="mealList"></calorie-total>
+  <calorie-average [mealList]="mealList"></calorie-average>
   `
 })
 export class MealListComponent {
