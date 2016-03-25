@@ -2,12 +2,13 @@ import { Component, EventEmitter } from 'angular2/core';
 import { Meal } from './meal.model';
 import { MealDetails } from './meal-details.component';
 import { MealComponent } from './meal-display.component';
+import { EditMealDetailsComponent } from './edit-meal-details.component';
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
-  directives:[MealComponent, MealDetails],
+  directives:[MealComponent, MealDetails, EditMealDetailsComponent],
   template: `
   <select (change)="onChange($event.target.value)">
     <option value="all" selected="selected">Show All</option>
