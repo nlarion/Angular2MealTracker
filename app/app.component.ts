@@ -1,4 +1,6 @@
 import { Component, EventEmitter } from 'angular2/core';
+import { Meal } from './meal.model';
+import { MealDetails } from './meal-details.component';
 
 @Component({
   selector: 'meal-display',
@@ -9,21 +11,6 @@ import { Component, EventEmitter } from 'angular2/core';
 })
 
 export class MealComponent {
-  public meal: Meal;
-}
-
-@Component({
-  selector: 'meal-details',
-  inputs: ['meal'],
-  template: `
-    <ul>
-      <li> Details: {{ meal.details }}</li>
-      <li> Calories: {{ meal.calories }}</li>
-    </ul>
-  `
-})
-
-export class MealDetails {
   public meal: Meal;
 }
 
@@ -100,10 +87,5 @@ export class AppComponent{
   }
   mealClicked(clickedMeal: Meal): void {
     console.log("parent", clickedMeal);
-  }
-}
-
-export class Meal {
-  constructor(public name: string, public details: string, public calories: number, public id: number){
   }
 }
