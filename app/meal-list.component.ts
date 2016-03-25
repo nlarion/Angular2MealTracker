@@ -15,24 +15,30 @@ import { CalorieAverageComponent } from './calorie-average.component';
   pipes: [CaloriePipe],
   directives:[MealComponent, MealDetails, EditMealDetailsComponent, NewMealComponent, CalorieTotalComponent, CalorieAverageComponent],
   template: `
-  <select (change)="onChange($event.target.value)">
-    <option value="all" selected="selected">Show All</option>
-    <option value="low">Show Low Calorie Meals</option>
-    <option value="notLow" >Show Not Low Calorie Meals</option>
-  </select>
-  <meal-display *ngFor="#currentMeal of mealList | lowCal:filterLow"
-  (click)="mealClicked(currentMeal)"
-  [class.selected]="currentMeal === selectedMeal"
-  [meal]="currentMeal"
-  [class.zBeer]="currentMeal.price < 5">
-  </meal-display>
-  <meal-details *ngIf="selectedMeal" [meal]="selectedMeal">
-  </meal-details>
-  <edit-meal-details *ngIf="selectedMeal" [meal]="selectedMeal">
-  </edit-meal-details>
-  <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
-  <calorie-total [mealList]="mealList"></calorie-total>
-  <calorie-average [mealList]="mealList"></calorie-average>
+  <div class="row">
+    <div class="col-sm-6">
+      <select (change)="onChange($event.target.value)">
+        <option value="all" selected="selected">Show All</option>
+        <option value="low">Show Low Calorie Meals</option>
+        <option value="notLow" >Show Not Low Calorie Meals</option>
+      </select>
+      <meal-display *ngFor="#currentMeal of mealList | lowCal:filterLow"
+        (click)="mealClicked(currentMeal)"
+        [class.selected]="currentMeal === selectedMeal"
+        [meal]="currentMeal"
+        [class.zBeer]="currentMeal.price < 5">
+      </meal-display>
+      <meal-details *ngIf="selectedMeal" [meal]="selectedMeal">
+      </meal-details>
+    </div>
+    <div class="col-sm-6">
+      <edit-meal-details class="edit" *ngIf="selectedMeal" [meal]="selectedMeal">
+      </edit-meal-details>
+      <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
+      <calorie-total [mealList]="mealList"></calorie-total>
+      <calorie-average [mealList]="mealList"></calorie-average>
+    </div>
+  </div>
   `
 })
 export class MealListComponent {

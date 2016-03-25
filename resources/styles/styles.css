@@ -4,3 +4,23 @@ h1 {
 .selected {
   color: blue;
 }
+
+meal-display h3 {
+  cursor: pointer;
+}
+
+.edit .row {
+  background-color: #CCC;
+}
+
+#editTop{
+  background-color: #ccc;
+  border-top-left-radius:2em;
+  border-top-right-radius:2em;
+}
+
+#editBottom{
+  background-color: #ccc;
+  border-bottom-right-radius:2em;
+  border-bottom-left-radius:2em;
+}
