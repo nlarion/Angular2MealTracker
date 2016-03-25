@@ -7,7 +7,9 @@ import { MealListComponent } from './meal-list.component';
   directives: [MealListComponent],
   template:`
     <div class="container">
-      <h1>MealTracker</h1>
+      <div class="jumbotron">
+        <h1>MealTracker</h1>
+      </div>
       <hr>
       <meal-list
         [mealList]="meals"
