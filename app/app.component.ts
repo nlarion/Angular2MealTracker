@@ -5,10 +5,6 @@ import { Component, EventEmitter } from 'angular2/core';
   inputs: ['meal'],
   template: `
     <h3>{{ meal.name }}</h3>
-    <ul>
-      <li> Details: {{ meal.details }}</li>
-      <li> Calories: {{ meal.calories }}</li>
-    </ul>
   `
 })
 
@@ -17,10 +13,25 @@ export class MealComponent {
 }
 
 @Component({
+  selector: 'meal-details',
+  inputs: ['meal'],
+  template: `
+    <ul>
+      <li> Details: {{ meal.details }}</li>
+      <li> Calories: {{ meal.calories }}</li>
+    </ul>
+  `
+})
+
+export class MealDetails {
+  public meal: Meal;
+}
+
+@Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
-  directives:[MealComponent],
+  directives:[MealComponent, MealDetails],
   template: `
   <select (change)="onChange($event.target.value)">
     <option value="all" selected="selected">Show All</option>
@@ -33,6 +44,8 @@ export class MealComponent {
   [meal]="currentMeal"
   [class.zBeer]="currentMeal.price < 5">
   </meal-display>
+  <meal-details *ngIf="selectedMeal" [meal]="selectedMeal">
+  </meal-details>
   <edit-meal-details *ngIf="selectedMeal" [meal]="selectedMeal">
   </edit-meal-details>
   <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
