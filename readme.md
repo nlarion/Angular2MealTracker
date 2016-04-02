@@ -1,7 +1,7 @@
 #MealTracker
 
 ####This is a website for a fitness club to track meals and number of calories for that meal.
-t####By: Neil Larion
+####By: Neil Larion
 
 ## Description
 
